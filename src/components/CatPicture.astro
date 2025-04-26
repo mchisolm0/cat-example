@@ -1,0 +1,15 @@
+interface Props {
+    id: string;
+}
+
+const { id } = Astro.props;
+const imageUrl = `https://cataas.com/cat/${id}`;
+
+<div class="bg-white rounded-lg shadow-md overflow-hidden aspect-square w-full">
+    <img 
+        src={imageUrl}
+        alt="Cat image"
+        class="w-full h-full object-cover"
+        loading="lazy"
+    />
+</div> 

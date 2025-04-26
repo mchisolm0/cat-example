@@ -1,11 +1,42 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import CatPictures from '../components/CatPictures.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Tell Astro this is a server-rendered route
+export const prerender = false;
+
+// Get the tag from the URL search params
+const tag = Astro.url.searchParams.get('tag') || '';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Cat API Example">
+	<main class="container mx-auto p-4 w-full">
+		<h1 class="text-3xl font-bold mb-4">Cat Image Gallery</h1>
+		
+		<form class="mb-4" method="GET">
+			<input
+				type="text"
+				name="tag"
+				value={tag}
+				placeholder="Enter tag"
+				class="border p-2 rounded mr-2"
+			/>
+			<button
+				type="submit"
+				class="bg-blue-500 text-white px-4 py-2 rounded"
+			>
+				Search
+			</button>
+		</form>
+
+		<CatPictures tag={tag} />
+	</main>
 </Layout>
+
+<style>
+	.container {
+		width: 95%;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+</style>

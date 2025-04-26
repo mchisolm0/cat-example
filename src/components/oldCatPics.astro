@@ -1,0 +1,80 @@
+import {useState} from "react";
+
+const CatPictures = () => {
+	const { cats, setCats } = useState([]);
+
+	useEffect(() => {
+		
+	}, [])
+	return (
+		<div>Cat Pictures</div>
+	)
+}
+export CatPictures;
+/*
+<script>
+	let catImages: any[] = [];
+	let loading = true;
+	let error: string | null = null;
+	let noResults = false;
+
+	async function fetchCatImages() {
+		const tagInput = document.getElementById('tag') as HTMLInputElement;
+		const tag = tagInput.value;
+		const loadingElement = document.getElementById('loading');
+		const errorElement = document.getElementById('error');
+		const noResultsElement = document.getElementById('noResults');
+		const imageGrid = document.getElementById('imageGrid');
+
+		if (loadingElement) loadingElement.classList.remove('hidden');
+		if (errorElement) errorElement.classList.add('hidden');
+		if (noResultsElement) noResultsElement.classList.add('hidden');
+		if (imageGrid) imageGrid.innerHTML = '';
+
+		try {
+			let url = 'https://cataas.com/api/cats?limit=20';
+			if (tag) {
+				url += `&tags=${tag}`;
+			}
+			const response = await fetch(url);
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+
+			const data = await response.json();
+			catImages = data;
+
+			if (data.length === 0) {
+				if (noResultsElement) noResultsElement.classList.remove('hidden');
+				return;
+			}
+
+			if (imageGrid) {
+				const template = document.createElement('template');
+				catImages.forEach((cat) => {
+					const div = document.createElement('div');
+					div.className = 'bg-white rounded-lg shadow-md overflow-hidden aspect-square w-full';
+					div.innerHTML = `
+						<img
+							src="https://cataas.com/cat/${cat.id}"
+							alt="Cat image"
+							class="w-full h-full object-cover"
+							loading="lazy"
+						/>
+					`;
+					template.content.appendChild(div);
+				});
+				imageGrid.appendChild(template.content);
+			}
+		} catch (e) {
+			error = e instanceof Error ? e.message : 'An error occurred';
+			if (errorElement) {
+				errorElement.textContent = error;
+				errorElement.classList.remove('hidden');
+			}
+		} finally {
+			if (loadingElement) loadingElement.classList.add('hidden');
+		}
+	}
+	*/
